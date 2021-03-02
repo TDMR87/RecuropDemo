@@ -7,6 +7,8 @@ https://www.nuget.org/packages/Recurop/
 
 https://github.com/TDMR87/Recurop
 
+***
+
 Project Layout:
 
 The MainWindowViewModel.cs contains the code logic.
