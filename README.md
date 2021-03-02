@@ -1,12 +1,19 @@
 # RecuropDemo
 A WPF timer application created with recurring operations from the Recurop library.
 
+![image](https://user-images.githubusercontent.com/44962475/109718132-9b4dea00-7baf-11eb-9b93-0e186be19f03.png)
+
 https://www.nuget.org/packages/Recurop/
+
 https://github.com/TDMR87/Recurop
 
-Layout:
-The MainWindowViewModel contains the code logic.
-The MainWindow.xaml UI elements are bound to the MainWindowViewModel properties. 
+Project Layout:
+
+The MainWindowViewModel.cs contains the code logic.
+
+The MainWindow.xaml is the application UI and the UI elements are bound to the MainWindowViewModel's properties. 
+
+***
 
 Using the Recurop .NET Standard class library you can create easily managed, timer based, recurring background operations. 
 You can bind XAML UI elements to the properties of the recurring operations and make the UI elements respond dynamically to the status of
