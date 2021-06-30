@@ -91,7 +91,7 @@ namespace RecuropDemo
 
             // Start a recurring operation using a lambda style Action.
             // Alternatevly, you could call any named method instead.
-            RecurringOperations.Manager.StartRecurring(RecurringTimerOperation, TimeSpan.FromSeconds(1), () =>
+            RecurringOperationsManager.Instance.StartRecurring(RecurringTimerOperation, TimeSpan.FromSeconds(1), () =>
             {
                 // Increment elapsed seconds
                 elapsedSeconds++;
@@ -118,10 +118,10 @@ namespace RecuropDemo
         public ICommand PauseTimerCommand => new RelayCommand(() =>
         {
             // Pause the timer operation
-            RecurringOperations.Manager.PauseRecurring(RecurringTimerOperation);
+            RecurringOperationsManager.Instance.PauseRecurring(RecurringTimerOperation);
 
             // Start a blink operation
-            RecurringOperations.Manager.StartRecurring(RecurringVisibilityOperation, TimeSpan.FromSeconds(0.5), () =>
+            RecurringOperationsManager.Instance.StartRecurring(RecurringVisibilityOperation, TimeSpan.FromSeconds(0.5), () =>
             {
                 switch (TimerVisibility)
                 {
@@ -142,15 +142,17 @@ namespace RecuropDemo
         public ICommand ContinueTimerCommand => new RelayCommand(() =>
         {
             // Resume the timer operation
-            RecurringOperations.Manager.ResumeRecurring(RecurringTimerOperation);
+            RecurringOperationsManager.Instance.ResumeRecurring(RecurringTimerOperation);
 
             // Cancel the blink operation
-            RecurringOperations.Manager.Cancel(RecurringVisibilityOperation);
+            RecurringOperationsManager.Instance.CancelRecurring(RecurringVisibilityOperation);
+
+            TimerVisibility = Visibility.Visible;
         });
 
         public ICommand CancelTimerCommand => new RelayCommand(() =>
         {
-            RecurringOperations.Manager.Cancel(RecurringTimerOperation);
+            RecurringOperationsManager.Instance.CancelRecurring(RecurringTimerOperation);
 
             DisplayTimer = TimeSpan.Zero;
 
